@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WINXSTEALTH | Admin Control Panel</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="login-overlay" class="login-container">
+        <div class="login-card">
+            <h2><i class="fas fa-lock neon-purple"></i> Admin Authentication</h2>
+            <p>Masukkan Kredensial Akses Root</p>
+            <div id="login-error" class="error-msg"></div>
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" id="admin-user" placeholder="WINXSTEALTH">
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="admin-pass" placeholder="••••••">
+            </div>
+            <button id="btn-login">Unlock Terminal</button>
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Kembali ke Toko</a>
+        </div>
+    </div>
+
+    <div id="admin-content" style="display: none;">
+        <nav class="admin-nav">
+            <span class="logo">WINX<span class="neon-purple">STEALTH</span> // Root Terminal</span>
+            <button id="btn-logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </nav>
+
+        <div class="admin-wrapper">
+            <aside class="admin-sidebar">
+                <ul>
+                    <li class="active" data-target="sec-products"><i class="fas fa-box"></i> Management Produk</li>
+                    <li data-target="sec-customizer"><i class="fas fa-sliders-h"></i> Edit Tampilan Banner</li>
+                </ul>
+            </aside>
+
+            <main class="admin-main">
+                
+                <section id="sec-products" class="admin-section active">
+                    <div class="section-title-wrapper">
+                        <h2>CRUD System Management</h2>
+                        <button class="add-btn" id="open-modal-add"><i class="fas fa-plus"></i> Tambah Produk Baru</button>
+                    </div>
+
+                    <table class="crud-table">
+                        <thead>
+                            <tr>
+                                <th>Nama Produk</th>
+                                <th>Badge</th>
+                                <th>Harga</th>
+                                <th>Fitur / Deskripsi</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-table-body">
+                            </tbody>
+                    </table>
+                </section>
+
+                <section id="sec-customizer" class="admin-section">
+                    <h2>Kustomisasi Tampilan Utama</h2>
+                    <div class="form-container-glass">
+                        <div class="input-group">
+                            <label>Ubah Judul Banner Utama (Hero Title)</label>
+                            <input type="text" id="custom-hero-title" placeholder="WINXSTEALTH">
+                        </div>
+                        <div class="input-group">
+                            <label>Ubah Sub-judul (Hero Subtitle)</label>
+                            <input type="text" id="custom-hero-subtitle" placeholder="Premium Marketplace">
+                        </div>
+                        <button class="save-settings-btn" id="save-banner-settings">Simpan Perubahan Banner</button>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <h3 id="modal-title">Form Data Produk</h3>
+            <input type="hidden" id="prod-id">
+            <div class="input-group">
+                <label>Nama Produk</label>
+                <input type="text" id="prod-name" required placeholder="Contoh: WINX VIP MOD">
+            </div>
+            <div class="input-group">
+                <label>Badge</label>
+                <input type="text" id="prod-badge" placeholder="Contoh: Hot / Premium / Safe">
+            </div>
+            <div class="input-group">
+                <label>Harga (IDR)</label>
+                <input type="text" id="prod-price" placeholder="Contoh: Rp500.000">
+            </div>
+            <div class="input-group">
+                <label>Fitur Keunggulan (Gunakan tanda koma ( , ) sebagai pemisah fitur)</label>
+                <textarea id="prod-features" rows="4" placeholder="AIMBOT, ESP MENU, HIDDEN PROCESS"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-close" id="close-modal">Batal</button>
+                <button class="btn-save" id="save-product-btn">Simpan Data</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
